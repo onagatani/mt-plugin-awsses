@@ -1,0 +1,42 @@
+<mt:setvarblock name="page_title"><__trans phrase="AWS-SES Email"><__trans phrase="list"></mt:setvarblock>
+<mt:include name="include/header.tmpl">
+
+<mt:if name="saved">
+<mtapp:statusmsg id="saved" class="success">
+<__trans phrase="Your changes have been saved.">
+</mtapp:statusmsg>
+</mt:if>
+
+<a class="icon-left icon-create" href="<mt:var name=script_url>?__mode=aws_ses_email&__action=edit" title="<__trans phrase="create">"><__trans phrase="create"></a>
+<div id="main-content">
+<div id="main-content-inner" class="inner pkg">
+<div id="selector" class="selector listing">
+<div id="entry-revision-listing" class="listing hide_actions">
+<table id="AWS-SES-listing-table" class="legacy listing-table hide_actions">
+<thead>
+<tr>
+<th class="col head"><span class="col-label">ID</span></th>
+<mt:loop name="columns">
+<th class="col head"><span class="col-label"><mt:var name="__value__"></span></th>
+</mt:loop>
+</tr>
+</thead>
+<tbody>
+<mt:loop name=records>
+<tr>
+<td class="col"><a href="<mt:var name=script_url>?__mode=aws_ses_email&__action=edit&id=<mt:var name="id">" title="<__trans phrase="edit">"><mt:var name="id"></a></td>
+
+<mt:loop name=columns>
+<td class="col"><mt:var name="$__key__"></td>
+</mt:loop>
+
+</tr>
+</mt:loop>
+</tbody>  
+</table>
+<mt:include name="include/pager.tmpl" component="AWSSES">
+</div>
+</div>
+</div>
+</div>
+<mt:include name="include/footer.tmpl">

@@ -1,0 +1,40 @@
+<mt:setvarblock name="page_title"><__trans phrase="AWS-SES email"><mt:if name="id"><__trans phrase="create"><mt:else><__trans phrase="edit"></mt:if></mt:setvarblock>
+<mt:include name="include/header.tmpl">
+
+<mt:IF name=id><a class="icon-left icon-delete" href="<mt:var name=script_url>?__mode=aws_ses_email&amp;id=<mt:var name="data" key="id">&amp;__action=delete" title="<__trans phrase="delete">"><__trans phrase="delete"></a></mt:IF>
+
+<div id="main-content">
+<div id="main-content-inner" class="inner pkg">
+
+<mt:if name="errors">
+<mt:include name="include/error.tmpl" component="AWSSES">
+</mt:if>
+
+<form id="AWS-SES-email" class="edit-form" action="<mt:var name=script_url>" method="post">
+<input type="hidden" name="__mode" value="aws_ses_email" />
+<input type="hidden" name="__action" value="edit" />
+<input type="hidden" name="id" value="<mt:var name=id>" />
+<mt:if name=id><input type="hidden" name="email" value="<mt:var name="data" key="email" encode_html=1>"></mt:if>
+<input type="hidden" name="magic_token" value="<mt:var name="magic_token">" />
+
+
+<mt:loop name="columns">
+<mtapp:setting id="<mt:var name="__key__">" label="<mt:var name="__value__" encode_html=1>">
+<input type="text" class="lang_str" name="<mt:var name="__key__">" value="<mt:var name="data" key="$__key__">" />
+</mtapp:setting>
+</mt:loop>
+
+<mt:setvarblock name="action_buttons">
+<button type="submit" accesskey="s" title="<__trans phrase="Save (s)">" class="save action primary button"> <__trans phrase="Save"></button>
+<button type="button" accesskey="b" title="<__trans phrase="Back (b)">" class="edit action button" onclick="location.href='<mt:var name=script_url>?__mode=aws_ses_email&amp;__action=list'"><__trans phrase="Back"></button>
+</mt:setvarblock>
+
+<mt:include name="include/actions_bar.tmpl" bar_position="bottom" hide_pager="1">
+
+</form>
+
+</div>
+</div>
+
+<mt:include name="include/footer.tmpl">
+

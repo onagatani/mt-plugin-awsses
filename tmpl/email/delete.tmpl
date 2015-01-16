@@ -1,0 +1,36 @@
+<mt:setvarblock name="page_title"><__trans phrase="AWS-SES trans"><__trans phrase="delete"></mt:setvarblock>
+<mt:include name="include/header.tmpl">
+
+<div id="main-content">
+<div id="main-content-inner" class="inner pkg">
+
+<p class="message"><__trans phrase="confirm delete data"></p>
+
+<form id="AWS-SES-trans" class="delete-form" action="<mt:var name=script_url>" method="post">
+<input type="hidden" name="__mode" value="aws_ses_email" />
+<input type="hidden" name="__action" value="delete" />
+<input type="hidden" name="magic_token" value="<mt:var name="magic_token">" />
+
+<mtapp:setting id="basename" label="<__trans phrase='basename'>">
+<mt:var name="data" key="basename" encode_html=1>
+</mtapp:setting>
+
+<mt:loop name="columns">
+<mtapp:setting id="<mt:var name="__key__">" label="<mt:var name="__value__" encode_html=1>">
+<mt:var name="data" key="$__key__" encode_html=1>
+</mtapp:setting>
+</mt:loop>
+
+<mt:setvarblock name="action_buttons">
+<button type="submit" accesskey="s" title="<__trans phrase="Delete (d)">" class="delete action primary button"><__trans phrase="Delete"></button>
+<button type="button" accesskey="b" title="<__trans phrase="Back (b)">" class="edit action button" onclick="location.href='<mt:var name=script_url>?__mode=aws_ses_email&amp;__action=list'"><__trans phrase="Back"></button>
+</mt:setvarblock>
+
+<mt:include name="include/actions_bar.tmpl" bar_position="bottom" hide_pager="1">
+
+</form>
+
+</div>
+</div>
+
+<mt:include name="include/footer.tmpl">

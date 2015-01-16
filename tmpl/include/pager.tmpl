@@ -1,0 +1,31 @@
+<div id="pagination-<$mt:var name="bar_position" default="top"$>" class="pagination">
+
+<mt:if name="pager_first_page" ne="$pager_current_page">
+<a href="<$mt:var name="script_url"$>?__mode=aws_ses_email&page=1" class="pagenav start">&laquo; <__trans phrase="First"></a>
+<mt:else>
+<span class="pagenav start disabled">&laquo; <__trans phrase="First"></span>
+</mt:if>
+
+<mt:if name="pager_previous_page">
+<a href="<$mt:var name="script_url"$>?__mode=aws_ses_email&page=<$mt:var name="pager_previous_page">" class="pagenav to-start">&lsaquo; <__trans phrase="Prev"></a>
+<mt:else>
+<span class="pagenav to-start disabled">&lsaquo; <__trans phrase="Prev"></span>
+</mt:if>
+
+
+<span class="current-rows"><__trans phrase="[_1] &ndash; [_2] of [_3]" params="<$mt:var name="pager_first"$>%%<$mt:var name="pager_last"$>%%<$mt:var name="pager_total_entries"$>"></span>
+
+<mt:if name="pager_next_page">
+<a href="<$mt:var name="script_url"$>?__mode=aws_ses_email&page=<mt:var name="pager_next_page">" class="pagenav to-end"><__trans phrase="Next"> &rsaquo;</a>
+<mt:else>
+<span class="pagenav to-end disabled"><__trans phrase="Next"> &rsaquo;</span>
+</mt:if>
+
+<mt:if name="pager_last_page" ne="$pager_current_page">
+<a href="<$mt:var name="script_url"$>?__mode=aws_ses_email&page=<mt:var name="pager_last_page">" class="pagenav end"><__trans phrase="Last"> &raquo;</a>
+<mt:else>
+<span class="pagenav end disabled"><__trans phrase="Last"> &raquo;</span>
+</mt:if>
+
+</div>
+
